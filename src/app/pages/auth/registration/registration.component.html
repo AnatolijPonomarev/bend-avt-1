@@ -1,0 +1,78 @@
+<div class="col-6 m-auto">
+  <div>
+    <span class="p-float-label">
+      <input
+        type="text"
+        id="float-input"
+        class="m-1"
+        [ngClass]="{ 'input-error': !login }"
+        pInputText
+        [(ngModel)]="login"
+      />
+      <label for="float-input">{{ loginText }}</label>
+    </span>
+  </div>
+  <div>
+    <span class="p-float-label">
+      <input
+        type="password"
+        id="float-input"
+        class="m-1"
+        [ngClass]="{ 'input-error': !psw }"
+        pInputText
+        [(ngModel)]="psw"
+      />
+      <label for="float-input">{{ pswText }}</label>
+    </span>
+  </div>
+  <div>
+    <span class="p-float-label">
+      <input
+        type="password"
+        id="float-input"
+        class="m-1"
+        [ngClass]="{'input-error': !pswRepeat}"
+        pInputText
+        [(ngModel)]="pswRepeat"
+      />
+      <label for="float-input">Confirm Password</label>
+    </span>
+  </div>
+  <div>
+    <span class="p-float-label">
+      <input
+        type="text"
+        id="float-input"
+        class="m-1"
+        pInputText
+        [(ngModel)]="email"
+      />
+      <label for="float-input">Почта</label>
+    </span>
+  </div>
+  <div>
+    <span class="p-float-label">
+      <input
+        type="text"
+        id="float-input"
+        class="m-1"
+        pInputText
+        [(ngModel)]="cardNumber"
+      />
+      <label for="float-input">Номер карты</label>
+    </span>
+  </div>
+
+</div>
+<div class="mx-2">
+  <p class="px-2"><p-checkbox name="groupname" value="val1" [(ngModel)]="saveUserInStore"></p-checkbox><span style="margin: 10px">Сохранить пользователя в хранилище</span></p>
+</div>
+<div class="d-flex justify-content-center">
+  <button
+    (click)="registration($event)"
+    type="button"
+    class="btn btn-success"
+    [disabled]="!login || !psw || !pswRepeat">
+    Зарегистрироваться
+  </button>
+</div>

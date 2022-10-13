@@ -1,0 +1,23 @@
+:host {
+  height: 60px;
+  width: 100%;
+}
+.user-block {
+  position: absolute;
+  right: 15%;
+  margin: .5rem;
+  padding: .3rem;
+  background-color: bisque;
+  border: 1px solid #cac2ca;
+  border-radius: .3rem;
+}
+.time-block {
+  position: absolute;
+  right: 0;
+  padding: .3rem;
+  margin-left: .5rem;
+  & .timer-day {
+    color: aqua;
+  }
+}
+

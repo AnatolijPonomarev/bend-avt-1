@@ -1,0 +1,8 @@
+<div>
+  <h6>Тип меню</h6>
+  <p-dropdown [options]="menuTypes"
+            [(ngModel)]="selectedMenuType"
+            optionLabel="label">
+            (change)="changeType($event)"
+</p-dropdown>
+</div>
