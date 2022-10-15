@@ -10,6 +10,13 @@ const routes: Routes = [
     {
       path: 'ticket-list',
       component: TicketListComponent
+    },
+    {
+      //вариант передачи роутинга 1
+      // path: 'ticket/:id',
+      //вариант 2
+      path: 'ticket',
+      loadChildren: () => import('../ticket-info/ticket-info.module').then(m => m.TicketInfoModule)
     }
   ]
  },

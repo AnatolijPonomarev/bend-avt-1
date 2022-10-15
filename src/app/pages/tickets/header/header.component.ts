@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private settingsActive = false;
   private timerInterval: number
   @Input() menuType: IMenuType;
-  @Input() test: string
+  // @Input() test: string = 'initialValue'
 
   constructor(private userService:UserService) { }
 
@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }, 1000 ),
 
   this.user = this.userService.getUser()?.login
-
   }
   ngOnDestroy(): void {
     if (this.timerInterval) {
@@ -47,11 +46,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnChanges(ev: SimpleChanges): void {
-    console.log(this.menuType)
+
     if (ev['menuType']) {
       this.settingsActive = (this.menuType?.type === 'extended');
       this.items = this.initMenuItems();
     }
+    console.log('menuType', this.menuType)
   }
 
   initMenuItems(): MenuItem[] {

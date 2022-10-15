@@ -22,6 +22,7 @@ export class AsideComponent implements OnInit {
       {type: 'custom', label: 'Обычное'},
       {type: 'extended', label: 'Расширенное'}
     ]
+    // console.log(this.selectedMenuType)
   }
   changeType(ev: {ev: Event, value: IMenuType}): void {
     console.log('ev', ev)

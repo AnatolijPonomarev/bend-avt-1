@@ -14,7 +14,7 @@ export class TicketsComponent implements OnInit {
     }
 
     updateSelectedType(ev: IMenuType):void {
-      console.log('ev', ev)
-      this.selectedType = ev
+      console.log('ev', {...ev})
+      this.selectedType = {...ev}
     }
 }

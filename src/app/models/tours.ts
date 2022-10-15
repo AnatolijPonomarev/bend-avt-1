@@ -3,5 +3,6 @@ export interface Tour {
   description: string
   tourOperator: string
   price: string,
-  img?: string
+  img?: string,
+  id: string
 }
