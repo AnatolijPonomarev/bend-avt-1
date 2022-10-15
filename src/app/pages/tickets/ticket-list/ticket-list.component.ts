@@ -12,6 +12,7 @@ import {TicketsService} from '../../../shared/services/tickets/tickets.service'
 })
 export class TicketListComponent implements OnInit {
   tickets: Tour[]
+  loadCountBlock: boolean = false
   @ViewChild('tourWrap', {read: BlockStyleDirective}) blockDirective: BlockStyleDirective
   @ViewChild('tourWrap') tourWrap: ElementRef
 
@@ -39,5 +40,9 @@ export class TicketListComponent implements OnInit {
     const el: HTMLElement = this.tourWrap.nativeElement
     el.setAttribute('style', 'background-color: #F8F0EF')
     this.blockDirective.initStyle(1)
+    setTimeout(()=>{
+      this.loadCountBlock = true;
+    });
+
   }
 }

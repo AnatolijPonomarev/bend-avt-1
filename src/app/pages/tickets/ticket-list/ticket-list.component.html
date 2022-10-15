@@ -1,6 +1,6 @@
 <div *ngIf="tickets">
-<div>
-  <p>Активный билет: {{blockDirective.activeElementIndex + 1}}</p>
+<div *ngIf="loadCountBlock">
+  <p>Активный билет: {{blockDirective.activeElementIndex}}</p>
   <p>Количество билетов: {{tourWrap.childElementCount}}</p>
 </div>
 

@@ -45,7 +45,6 @@ export class BlockStyleDirective implements OnInit {
 
   }
   initKeyUp(event: KeyboardEvent) {
-    if (this.index >= 0) {
       if (event.key === 'ArrowRight' || 'Arrowleft') {
         (this.items[this.index] as HTMLElement).removeAttribute('style')
       }
@@ -61,7 +60,6 @@ export class BlockStyleDirective implements OnInit {
           (this.items[this.index] as HTMLElement).setAttribute('style', 'border: 2px solid red')
           // console.log(this.index)
         }
-      }
     }
     this.activeElementIndex = this.index
   }
@@ -69,6 +67,7 @@ export class BlockStyleDirective implements OnInit {
 
   initStyle(index: number = 0): void {
     if (this['index']) {
+      this.activeElementIndex = index
       this.items[this.index - 1].setAttribute('style', 'border: 2px solid red');
     }
   }
