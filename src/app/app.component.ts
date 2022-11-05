@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ticketSales2022';
   prop: string;
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
 }
+
+

@@ -11,19 +11,22 @@
       <label for="float-input">{{pswText}}</label>
     </span>
   </div>
-  <div class="mb-2">
+  <div class="mb-2" *ngIf="showCard">
+    номер карты
     <p-checkbox name="groupname"
     [binary]="true"
     (onChange)="vipStatusSelected()"
     [(ngModel)]="selectedValue">
   </p-checkbox>
+  <div>
     <div *ngIf="selectedValue" class="mt-2 anime">
       <span>Номер карты</span>
       <input type="text" class="m-1" pInputText [(ngModel)]="cardNumber" />
     </div>
   </div>
+  </div>
 </div>
 <div class="d-flex justify-content-center">
   <button type="button" (click)="onAuth($event)" class="btn btn-success">{{authTextButton}}</button>
 </div>
-<script src="./test.js"></script>
+<!-- <script src="./test.js"></script> -->

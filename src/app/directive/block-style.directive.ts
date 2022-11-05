@@ -1,5 +1,6 @@
 import { EmitterVisitorContext } from '@angular/compiler';
 import { Directive, ElementRef, EventEmitter, Input, OnInit, Output,  } from '@angular/core';
+import { fromEvent } from 'rxjs';
 
 @Directive({
   selector: '[appBlockStyle]',
@@ -25,51 +26,61 @@ export class BlockStyleDirective implements OnInit {
 
   }
   ngAfterViewInit() {
-    this.activeElementIndex = 0
+    this.activeElementIndex = 1
+
     if (this.selector) {
       this.items = this.el.nativeElement.querySelectorAll(this.selector)
       if (this.initFirst) {
-        // console.log(this.initFirst);
+        console.log(this.initFirst);
         (this.items[0] as HTMLElement).setAttribute('style', 'border: 2px solid red')
-
       }
     } else {
       console.log('Не передан селектор')
     }
     setTimeout(() => {
-      this.renderComplete.emit(true)
+      this.renderComplete.emit(true);
     });
+
   }
 
   ngOnChanges() {
 
   }
   initKeyUp(event: KeyboardEvent) {
-      if (event.key === 'ArrowRight' || 'Arrowleft') {
-        (this.items[this.index] as HTMLElement).removeAttribute('style')
+    console.log(this.activeElementIndex)
+    while (this.index >= 1 && this.index <= this.items.length) {
+      if ( (event.key === 'ArrowRight') && (this.activeElementIndex <= this.items.length - 1)) {
+        this.items[this.index - 1]?.classList.remove('ticket-border', 'slowMoveUp');
+        this.index++
+        this.items[this.index - 1].classList.add('ticket-border', 'slowMoveUp');
+        this.activeElementIndex = this.index
       }
+      if ((event.key === 'ArrowLeft') && (this.activeElementIndex >= 2)) {
+        console.log('arrow left')
+        this.items[this.index - 1]?.classList.remove('ticket-border', 'slowMoveUp');
+        this.index--
+        this.items[this.index - 1].classList.add('ticket-border', 'slowMoveUp');
+        this.activeElementIndex = this.index
 
-      if (event.key === 'ArrowRight') {
-        this.index++;
-        if (this.items[this.index]) {
-          (this.items[this.index] as HTMLElement).setAttribute('style', 'border: 2px solid red')
-        }
-      } else if (event.key === 'ArrowLeft') {
-        this.index--;
-        if (this.items[this.index]) {
-          (this.items[this.index] as HTMLElement).setAttribute('style', 'border: 2px solid red')
-          // console.log(this.index)
-        }
+      }
+      break
     }
-    this.activeElementIndex = this.index
+  }
+  initStyle(index: number = 0): void {
+    console.log(this.index, 'index')
+    if (this['index']) {
+      this.activeElementIndex = index
+      setTimeout( () => {
+        this.items[this.index + 1]?.classList.add('ticket-border', 'slowMoveUp')
+        console.log(this.items[this.index - 1])
+      }, 500);
+    }
   }
 
 
-  initStyle(index: number = 0): void {
-    if (this['index']) {
-      this.activeElementIndex = index
-      this.items[this.index - 1].setAttribute('style', 'border: 2px solid red');
-    }
+  updateItems(): void {
+    console.log('updateItems')
+    this.items = this.el.nativeElement.querySelectorAll(this.selector)
   }
 }
 

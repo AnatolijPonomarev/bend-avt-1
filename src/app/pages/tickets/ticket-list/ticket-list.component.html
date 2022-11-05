@@ -1,10 +1,13 @@
-<div *ngIf="tickets">
+<div>
 <div *ngIf="loadCountBlock">
   <p>Активный билет: {{blockDirective.activeElementIndex}}</p>
-  <p>Количество билетов: {{tourWrap.childElementCount}}</p>
+  <p>Количество билетов: {{tickets.length}}</p>
 </div>
-
+<div>
+  <span>Поиск </span><input #ticketSearch [(ngModel)]="ticketSearchValue" type="text" pInputText >
+</div>
 <div appBlockStyle
+*ngIf="tickets"
 #tourWrap
 #blockDirective="blockStyle"
 class="d-flex flex-wrap justify-content-around"

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IUser } from 'src/app/models/users';
-
+import { UserService } from '../user/user.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   private usersStorage: IUser[] = []
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   checkUser(user: IUser):boolean {
     const isUserExists = this.usersStorage.find((el: IUser) => el.login === user.login)

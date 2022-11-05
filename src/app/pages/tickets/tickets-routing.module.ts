@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { TicketsComponent } from './tickets/tickets.component';
-
+import { SettingsComponent } from '../settings/settings/settings.component';
 const routes: Routes = [
   { path: '',
   component: TicketsComponent,
@@ -17,6 +17,10 @@ const routes: Routes = [
       //вариант 2
       path: 'ticket',
       loadChildren: () => import('../ticket-info/ticket-info.module').then(m => m.TicketInfoModule)
+    },
+    {
+      path: 'settings',
+      component: SettingsComponent
     }
   ]
  },

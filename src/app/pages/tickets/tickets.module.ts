@@ -10,7 +10,13 @@ import {MenubarModule} from 'primeng/menubar';
 import {DropdownModule} from 'primeng/dropdown';
 import {FormsModule} from '@angular/forms';
 import { BlockStyleDirective } from 'src/app/directive/block-style.directive';
-
+import { SettingsComponent } from '../settings/settings/settings.component';
+import {CalendarModule} from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import {TabViewModule} from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -19,14 +25,23 @@ import { BlockStyleDirective } from 'src/app/directive/block-style.directive';
     FooterComponent,
     TicketListComponent,
     AsideComponent,
-    BlockStyleDirective
+    BlockStyleDirective,
+    SettingsComponent
+
   ],
   imports: [
     CommonModule,
     TicketsRoutingModule,
     MenubarModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    CalendarModule,
+    ToastModule,
+    ReactiveFormsModule,
+    TabViewModule
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class TicketsModule { }

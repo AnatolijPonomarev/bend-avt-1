@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {MessageService} from 'primeng/api';
 import { IUser } from 'src/app/models/users';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { ConfigService } from 'src/app/shared/services/configService/config.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   email: string
   cardNumber: string;
   saveUserInStore: string
+  showCardNumber: boolean
 
   loginText: string = 'Login'
   pswText: string = 'Password'
@@ -23,6 +25,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   constructor(private messageService: MessageService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.showCardNumber = ConfigService.config.useUserCard
+    console.log(this.showCardNumber)
   }
   ngOnDestroy(){
     console.log('Destroyed')
@@ -41,10 +45,13 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     }
     if (!this.authService.isUserExists(userObj)) {
       this.authService.setUser(userObj)
+      console.log(this.saveUserInStore)
       if (this.saveUserInStore) {
         const objUserJsonStr = JSON.stringify(userObj)
         window.localStorage.setItem('user_' + userObj?.login, objUserJsonStr)
       }
+      const objUserJsonStr = JSON.stringify(userObj)
+      window.localStorage.setItem('user_' + userObj?.login, objUserJsonStr)
       this.messageService.add({severity:'success', summary: this.login + ' зарегистрирован', detail:''});
     } else {
       this.messageService.add({severity:'warn', summary: this.login + ' уже есть', detail:''});

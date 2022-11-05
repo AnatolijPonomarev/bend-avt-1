@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-    this.items
+    // this.items
     this.items = [
       {
           label: 'Билеты',
@@ -29,7 +29,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       },
       {
         label: 'Выйти',
-        routerLink: ['auth']
+        routerLink: ['auth'],
+        command: () => this.userService.removeUserToken()
     }
 
   ];
@@ -62,12 +63,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
         },
         {
           label: 'Настройки',
-          routerLink: ['/settings'],
-          visible: this.settingsActive
+          routerLink: ['settings'],
+          visible: this.settingsActive,
         },
         {
           label: 'Выйти',
-          routerLink: ['auth']
+          routerLink: ['auth'],
+          command: () => this.userService.removeUserToken()
       }
     ];
   }

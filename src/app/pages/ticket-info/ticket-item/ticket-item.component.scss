@@ -1,0 +1,41 @@
+.image_container {
+  max-width: 90%;
+  background-color: aliceblue;
+  border-radius: .4rem;
+  padding: 1rem;
+  img {
+    width: 100%;
+    border-radius: .4rem;
+    float: left;
+  }
+  &::after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}
+button {
+  background: rgb(43, 0, 217);
+  border: none;
+  border-radius: .3rem;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  margin: 1rem;
+}
+
+.img-carousel {
+  max-width: 60%;
+}
+
+.ticket-img-nearest {
+  img {
+    width: 100%;
+    border-radius: .4rem;
+    float: left;
+  }
+  &::after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}
