@@ -1,8 +1,8 @@
 <div>
-<div *ngIf="loadCountBlock">
+<ng-container *ngIf="loadCountBlock">
   <p>Активный билет: {{blockDirective.activeElementIndex}}</p>
   <p>Количество билетов: {{tickets.length}}</p>
-</div>
+</ng-container>
 <div>
   <span>Поиск </span><input #ticketSearch [(ngModel)]="ticketSearchValue" type="text" pInputText >
 </div>
@@ -14,7 +14,8 @@ class="d-flex flex-wrap justify-content-around"
 
 [selector]="'.ticket-item'"
 [initFirst]="false"
-(renderComplete)="directiveRenderComplete($event)">
+(renderComplete)="directiveRenderComplete($event)"
+>
 
 
   <div class="ticket-item col-3 m-2"

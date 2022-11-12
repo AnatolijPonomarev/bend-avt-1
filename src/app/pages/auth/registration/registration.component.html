@@ -50,7 +50,7 @@
       <label for="float-input">Почта</label>
     </span>
   </div>
-  <div *ngIf="showCardNumber">
+  <div *ngIf="showCardNumber; else noSelected">
     <span class="p-float-label">
       <input
         type="text"
@@ -76,3 +76,6 @@
     Зарегистрироваться
   </button>
 </div>
+<ng-template #noSelected>
+  <p>Карта не выбрана</p>
+</ng-template>

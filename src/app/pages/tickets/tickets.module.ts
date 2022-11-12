@@ -14,9 +14,9 @@ import { SettingsComponent } from '../settings/settings/settings.component';
 import {CalendarModule} from 'primeng/calendar';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
 import {TabViewModule} from 'primeng/tabview';
+import { StatisticsComponent } from '../settings/statistics/statistics.component';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import {TabViewModule} from 'primeng/tabview';
     TicketListComponent,
     AsideComponent,
     BlockStyleDirective,
-    SettingsComponent
-
+    SettingsComponent,
+    StatisticsComponent
   ],
   imports: [
     CommonModule,
@@ -37,8 +37,8 @@ import {TabViewModule} from 'primeng/tabview';
     FormsModule,
     CalendarModule,
     ToastModule,
-    ReactiveFormsModule,
-    TabViewModule
+    TabViewModule,
+    TableModule
   ],
   providers: [
     MessageService

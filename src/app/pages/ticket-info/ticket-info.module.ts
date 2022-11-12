@@ -5,7 +5,7 @@ import { TicketItemComponent } from './ticket-item/ticket-item.component';
 import { InputTextModule } from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {InputNumberModule} from 'primeng/inputnumber';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CarouselModule} from 'primeng/carousel';
 
 
@@ -21,7 +21,8 @@ import {CarouselModule} from 'primeng/carousel';
     CalendarModule,
     ReactiveFormsModule,
     CarouselModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule
   ]
 })
 export class TicketInfoModule { }

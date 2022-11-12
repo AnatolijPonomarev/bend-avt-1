@@ -47,7 +47,6 @@ export class TicketListComponent implements OnInit, OnDestroy {
       })
 
       this.tourUnsubscriber = this.ticketService.getTicketTypeObservable().subscribe((data: ITourTypeSelect) => {
-        // console.log(data, 'tourUnsubscriber')
         let ticketType: string
         switch(data.value) {
           case 'single':
@@ -68,22 +67,18 @@ export class TicketListComponent implements OnInit, OnDestroy {
           console.log('dateValue',dateValue)
           this.tickets = this.ticketCopy.filter((el) => el.date === dateValue);
         }
-
+        this.blockDirective.initStyle(1)
         setTimeout(() => {
+          this.blockDirective.initStyle(1)
           this.blockDirective.updateItems()
           this.loadCountBlock = true
-          this.blockDirective.initStyle(1)
         })
       }
       )
-      setTimeout(() => {
-        this.blockDirective.initStyle(1)
-      }, 1000)
+
   }
 
   ngAfterViewInit() {
-
-
     //search
     const fromEventObserver = fromEvent(this.ticketSearch.nativeElement, 'keyup', {passive: true})
     this.searchTicketSub = fromEventObserver.pipe(
@@ -98,8 +93,6 @@ export class TicketListComponent implements OnInit, OnDestroy {
           this.tickets = [...this.ticketCopy]
         }
       })
-
-
   }
 
   ngOnDestroy(): void {
@@ -116,13 +109,15 @@ export class TicketListComponent implements OnInit, OnDestroy {
 
   directiveRenderComplete(ev: boolean) {
     const el: HTMLElement = this.tourWrap.nativeElement
-    el.setAttribute('style', 'background-color: #F8F0EF')
-    console.log(this.blockDirective, 'blockDirective')
-
     setTimeout(()=>{
       this.loadCountBlock = true;
     });
-
-
+    setTimeout(() => {
+      this.blockDirective.initStyle(1)
+      // el.firstElementChild?.classList.add('ticket-border', 'slowMoveUp')
+    }, 400)
+  }
+  setInit() {
+    this.blockDirective.initStyle(1)
   }
 }

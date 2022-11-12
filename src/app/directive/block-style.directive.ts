@@ -23,15 +23,13 @@ export class BlockStyleDirective implements OnInit {
   constructor(private el: ElementRef) { }
 
   ngOnInit(): void {
-
   }
   ngAfterViewInit() {
     this.activeElementIndex = 1
-
     if (this.selector) {
+      console.log(this.selector)
       this.items = this.el.nativeElement.querySelectorAll(this.selector)
       if (this.initFirst) {
-        console.log(this.initFirst);
         (this.items[0] as HTMLElement).setAttribute('style', 'border: 2px solid red')
       }
     } else {
@@ -47,34 +45,37 @@ export class BlockStyleDirective implements OnInit {
 
   }
   initKeyUp(event: KeyboardEvent) {
-    console.log(this.activeElementIndex)
+    // console.log(this.activeElementIndex)
     while (this.index >= 1 && this.index <= this.items.length) {
       if ( (event.key === 'ArrowRight') && (this.activeElementIndex <= this.items.length - 1)) {
+        // console.log(this.items[this.index - 1])
         this.items[this.index - 1]?.classList.remove('ticket-border', 'slowMoveUp');
         this.index++
         this.items[this.index - 1].classList.add('ticket-border', 'slowMoveUp');
         this.activeElementIndex = this.index
       }
       if ((event.key === 'ArrowLeft') && (this.activeElementIndex >= 2)) {
-        console.log('arrow left')
+        // console.log('arrow left')
         this.items[this.index - 1]?.classList.remove('ticket-border', 'slowMoveUp');
         this.index--
         this.items[this.index - 1].classList.add('ticket-border', 'slowMoveUp');
         this.activeElementIndex = this.index
-
       }
       break
     }
   }
-  initStyle(index: number = 0): void {
-    console.log(this.index, 'index')
+
+  initStyle(index: number = 1): void {
     if (this['index']) {
+
+      this.items[this.index -1]?.classList.remove('ticket-border', 'slowMoveUp')
       this.activeElementIndex = index
       setTimeout( () => {
-        this.items[this.index + 1]?.classList.add('ticket-border', 'slowMoveUp')
-        console.log(this.items[this.index - 1])
-      }, 500);
+        this.items[this.index - 1]?.classList.add('ticket-border', 'slowMoveUp')
+        console.log('block init style')
+      });
     }
+
   }
 
 
