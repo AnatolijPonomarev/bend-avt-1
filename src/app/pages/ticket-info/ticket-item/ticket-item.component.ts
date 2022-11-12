@@ -121,6 +121,7 @@ export class TicketItemComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSubmit() {
+    console.log('onSubmit')
 
   }
   selectDate($event: Event) {
@@ -131,6 +132,5 @@ export class TicketItemComponent implements OnInit, AfterViewInit, OnDestroy {
     const userData = this.userForm.getRawValue()
     const postData = {...this.ticket, ...userData}
     this.ticketService.sendTourData(postData).subscribe()
-
   }
 }

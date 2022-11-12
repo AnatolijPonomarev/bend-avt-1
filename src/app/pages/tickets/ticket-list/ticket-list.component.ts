@@ -34,16 +34,13 @@ export class TicketListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.ticketService.getTickets().subscribe(
-      (data) => {
-        this.tickets = data
-        this.ticketStorage.setStorage(data)
-      }
-      )
       this.ticketService.getTickets().subscribe((data) => {
         this.tickets = data
         this.ticketCopy = [...this.tickets]
         this.ticketStorage.setStorage(data)
+        setTimeout( () => {
+          this.blockDirective.initStyle(1)
+        })
       })
 
       this.tourUnsubscriber = this.ticketService.getTicketTypeObservable().subscribe((data: ITourTypeSelect) => {
@@ -67,7 +64,6 @@ export class TicketListComponent implements OnInit, OnDestroy {
           console.log('dateValue',dateValue)
           this.tickets = this.ticketCopy.filter((el) => el.date === dateValue);
         }
-        this.blockDirective.initStyle(1)
         setTimeout(() => {
           this.blockDirective.initStyle(1)
           this.blockDirective.updateItems()
@@ -112,10 +108,6 @@ export class TicketListComponent implements OnInit, OnDestroy {
     setTimeout(()=>{
       this.loadCountBlock = true;
     });
-    setTimeout(() => {
-      this.blockDirective.initStyle(1)
-      // el.firstElementChild?.classList.add('ticket-border', 'slowMoveUp')
-    }, 400)
   }
   setInit() {
     this.blockDirective.initStyle(1)

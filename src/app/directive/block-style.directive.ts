@@ -45,7 +45,7 @@ export class BlockStyleDirective implements OnInit {
 
   }
   initKeyUp(event: KeyboardEvent) {
-    // console.log(this.activeElementIndex)
+
     while (this.index >= 1 && this.index <= this.items.length) {
       if ( (event.key === 'ArrowRight') && (this.activeElementIndex <= this.items.length - 1)) {
         // console.log(this.items[this.index - 1])
@@ -66,16 +66,21 @@ export class BlockStyleDirective implements OnInit {
   }
 
   initStyle(index: number = 1): void {
+    this.activeElementIndex = 1
+    this.index = 1
     if (this['index']) {
-
-      this.items[this.index -1]?.classList.remove('ticket-border', 'slowMoveUp')
+      console.log('INIT')
+      this.items.forEach(el => {
+        if (el.matches('ticket-border')) {
+          el.classList.remove('ticket-border', 'slowMoveUp')
+        }
+       })
+      // this.items[this.index -1]?.classList.remove('ticket-border', 'slowMoveUp')
       this.activeElementIndex = index
       setTimeout( () => {
         this.items[this.index - 1]?.classList.add('ticket-border', 'slowMoveUp')
-        console.log('block init style')
       });
     }
-
   }
 
 
